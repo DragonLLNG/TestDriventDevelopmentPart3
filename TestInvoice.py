@@ -7,10 +7,21 @@ def products():
                'Notebook': {'qnt': 5, 'unit_price': 7.5, 'discount': 10}}
     return products
 
-def test_CanFindInvoiceClass():
+@pytest.fixture()
+def invoice()
     invoice = Invoice()
+    return invoice
 
-def test_CanCalculateTotalImpurePrice(products):
+
+def test_CanCalculateTotalImpurePrice(invoice,products):
     invoice = Invoice()
     invoice.totalImprurePrice(products)
     assert invoice.totalImprurePrice(products) == 75
+
+def test_CanCalculateTotalDiscount(invoice, products):
+    invoice.total_Discount(products)
+    assert invoice.total_Discount(products) == 5.62
+
+def test_CanCalculateTotalPurePrice(invoice, products):
+    invoice.totalPurePrice(products)
+    assert invoice.totalPurePrice(products) == 69.38
